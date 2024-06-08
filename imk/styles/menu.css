@@ -1,0 +1,227 @@
+/* menu.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  background-image: url("/imk/assets/body-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Tombol Setting dengan Ikon setting */
+.setting-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.settings-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.settings-icon.rotate-open {
+  transform: rotate(180deg);
+}
+
+.settings-icon.rotate-close {
+  transform: rotate(0deg);
+}
+
+/* Styles untuk sidebar/dropdown menu */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Posisi awal di luar layar */
+  width: 300px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 998;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0; /* Posisi saat sidebar terbuka */
+}
+
+.sidebar-header {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Styles untuk overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 997;
+  display: none;
+}
+
+.overlay.show {
+  display: block;
+}
+
+/* Styles untuk konten menu */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #535353;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 2;
+}
+
+.menu-card {
+  text-decoration: none;
+  color: inherit;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.menu-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.menu-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.menu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-image-container {
+  overflow: hidden;
+  height: 200px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.menu-card:hover .card-image {
+  transform: scale(1.1);
+}
+
+.menu-card-body {
+  padding: 1.5rem;
+}
+
+.menu-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.menu-card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .menu-container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    max-width: 90%;
+    gap: 1.5rem;
+  }
+
+  .menu-card {
+    border-radius: 0.75rem;
+  }
+
+  .card-image-container {
+    height: 180px;
+  }
+
+  .menu-card-body {
+    padding: 1.25rem;
+  }
+
+  .menu-card-title {
+    font-size: 1.1rem;
+  }
+
+  .menu-card-text {
+    font-size: 0.9rem;
+  }
+}

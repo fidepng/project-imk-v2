@@ -1,0 +1,95 @@
+<!-- menu.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      href="/imk/assets/bootstrap-5.3.3-dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/imk/styles/menu.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="#" />
+    <link rel="manifest" href="/imk/manifest.json" />
+    <meta name="theme-color" content="#FFFFFF" />
+  </head>
+  <body>
+    <button
+      class="setting-btn"
+      aria-label="Buka Menu Pengaturan"
+      aria-controls="sidebar"
+      role="button"
+    >
+      <img
+        src="/imk/assets/settings.svg"
+        alt="Ikon Pengaturan"
+        class="settings-icon"
+      />
+    </button>
+
+    <div class="sidebar" aria-hidden="true" id="sidebar">
+      <div class="sidebar-header">
+        <h5>Menu Pengaturan</h5>
+      </div>
+      <div class="sidebar-content">
+        <!-- Konten sidebar jika diperlukan -->
+      </div>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="content-wrapper">
+      <div class="menu-container">
+        <h1 class="title" aria-live="polite">Pilih Subjek</h1>
+        <div class="menu-grid">
+          <a
+            href="/imk/pages/math-quiz.html"
+            class="menu-card"
+            aria-label="Kuis Matematika"
+          >
+            <div class="card-image-container">
+              <img
+                src="/imk/assets/blurry-gradient-haikei.svg"
+                alt="Matematika"
+                class="card-image"
+              />
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-card-title">Matematika</h5>
+              <p class="menu-card-text">
+                Kuis matematika sederhana untuk anak-anak sekolah dasar.
+              </p>
+            </div>
+          </a>
+          <a
+            href="/imk/pages/common-knowledge-quiz.html"
+            class="menu-card"
+            aria-label="Kuis Pengetahuan Umum"
+          >
+            <div class="card-image-container">
+              <img
+                src="/imk/assets/blurry-gradient-haikei.svg"
+                alt="Pengetahuan Umum"
+                class="card-image"
+              />
+            </div>
+            <div class="menu-card-body">
+              <h5 class="menu-card-title">Pengetahuan Umum</h5>
+              <p class="menu-card-text">
+                Tebak gambar dan jawab pertanyaan pengetahuan umum.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script src="/imk/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/imk/scripts/sidebar.js"></script>
+  </body>
+</html>

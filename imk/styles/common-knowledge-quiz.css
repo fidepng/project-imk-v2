@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F0F8FF;
+  background-image: url('/imk-v1/assets/body-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.math-quiz-container {
+  max-width: 700px;
+  width: 100%;
+  padding: 1rem;
+}
+
+.quiz-card {
+  border-radius: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 123, 255, 0.15);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 123, 255, 0.25);
+}
+
+.question-box {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #fff;
+  padding: 1rem 1.5rem; /* Menambah padding horizontal */
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.question-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Tetap center */
+  padding: 1rem; /* Menambah padding agar teks tidak terlalu dekat dengan tepi */
+}
+
+/* Tambahkan gaya untuk gambar pertanyaan */
+.question-image {
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya responsif untuk gambar pertanyaan */
+@media (max-width: 767px) {
+  .question-image {
+    max-height: 200px;
+  }
+}
+
+#answer-options .btn {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+#answer-options .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  transform: skew(-25deg);
+  transition: left 0.5s ease;
+}
+
+#answer-options .btn:hover {
+  border-color: #007bff;
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+#answer-options .btn:hover::before {
+  left: 100%;
+}
+
+#answer-options .btn.correct {
+  background-color: #28a745;
+  color: #fff;
+  border-color: #28a745;
+}
+
+#answer-options .btn.incorrect {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); box-shadow: 0 12px 30px rgba(40, 167, 69, 0.4), 0 0 0 10px rgba(40, 167, 69, 0.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes incorrectShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+.btn {
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-title {
+  font-weight: 700;
+  color: #333;
+}
+
+.trophy-image {
+  width: 100px;
+  height: auto;
+  margin-top: -50px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  animation: bounceIn 1s;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#finalScore {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #007bff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#finalMessage {
+  font-style: italic;
+  color: #6c757d;
+}
+
+/* Animation untuk transisi antar pertanyaan */
+@keyframes fadeSlideIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-card {
+  animation: fadeSlideIn 0.5s ease;
+}
+
+/* Animation untuk tombol jawaban yang benar */
+@keyframes pulseGreen {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+#answer-options .btn.correct {
+  animation: pulseGreen 1s;
+}
+
+/* Animation untuk efek ledakan pada jawaban yang salah */
+@keyframes explodeRed {
+  0% { transform: scale(1); }
+  30% { background-color: #fff; }
+  40% { transform: scale(1.1); background-color: #dc3545; }
+  60% { transform: scale(0.9); }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+#answer-options .btn.incorrect {
+  animation: explodeRed 0.7s;
+}
+
+#question-number {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.question-nav {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.question-nav:hover {
+  background-color: #dee2e6;
+  color: #495057;
+  transform: scale(1.1);
+}
+
+.question-nav.answered {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.question-nav.current {
+  background-color: #ffc107;
+  color: #212529;
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Timer Bar menggunakan h1::after */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px; /* Menambah ruang di bawah teks untuk timer bar */
+}
+
+@keyframes timerAnimation {
+  0% { width: var(--timer-width); }
+  100% { width: 0; }
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 6px; /* Tinggi timer bar */
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 3px;
+  transform-origin: left;
+  transition: width linear, background-color 0.5s ease; /* Animasi transisi untuk perubahan warna */
+  width: var(--timer-width, 100%);
+  animation: timerAnimation 1s linear infinite;
+  animation-play-state: paused;
+}
+
+h1.timer-active::after {
+  animation-play-state: running;
+}
+
+@keyframes titleUnderline {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+h1.time-warning::after {
+  background: linear-gradient(to right, #ffc107, #ffc720);
+}
+
+h1.time-danger::after {
+  background: linear-gradient(to right, #ff6b6b, #dc3545);
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+  
+  #answer-options .btn {
+    font-size: 1rem;
+    padding: 0.75rem;
+    min-height: 50px;
+    margin-bottom: 0.4rem;
+  }
+
+  .question-nav {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .question-text {
+    font-size: 1.25rem;
+  }
+  
+  #answer-options .btn {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .trophy-image {
+    width: 80px;
+    margin-top: -40px;
+  }
+
+  #finalScore {
+    font-size: 2rem;
+  }
+
+  #finalMessage {
+    font-size: 0.9rem;
+  }
+
+  .modal-dialog {
+    margin: 1rem;
+  }
+}
