@@ -36,10 +36,20 @@
 
     <div class="sidebar" aria-hidden="true" id="sidebar">
       <div class="sidebar-header">
-        <h5>Menu Pengaturan</h5>
+        <h5>Menu Aksebilitas</h5>
       </div>
       <div class="sidebar-content">
-        <!-- Konten sidebar jika diperlukan -->
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="ttsSwitch"
+            aria-label="Aktifkan atau Nonaktifkan Text-to-Speech"
+          />
+          <label class="form-check-label" for="ttsSwitch">
+            Text-to-Speech
+          </label>
+        </div>
       </div>
     </div>
     <div class="overlay"></div>
@@ -58,6 +68,7 @@
                 src="/imk/assets/blurry-gradient-haikei.svg"
                 alt="Matematika"
                 class="card-image"
+                aria-label="Kuis Matematika"
               />
             </div>
             <div class="menu-card-body">
@@ -77,6 +88,7 @@
                 src="/imk/assets/blurry-gradient-haikei.svg"
                 alt="Pengetahuan Umum"
                 class="card-image"
+                aria-label="Kuis Pengetahuan Umum"
               />
             </div>
             <div class="menu-card-body">
@@ -91,5 +103,6 @@
     </div>
     <script src="/imk/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="/imk/scripts/sidebar.js"></script>
+    <script type="module" src="/imk/scripts/tts.js"></script>
   </body>
 </html>

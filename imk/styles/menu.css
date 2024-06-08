@@ -10,6 +10,10 @@ body {
   background-attachment: fixed;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Tombol Setting dengan Ikon setting */
 .setting-btn {
   position: fixed;
@@ -60,6 +64,10 @@ body {
   border-bottom: 1px solid #dee2e6;
 }
 
+.sidebar-content {
+  padding: 20px;
+}
+
 /* Styles untuk overlay */
 .overlay {
   position: fixed;
@@ -74,6 +82,40 @@ body {
 
 .overlay.show {
   display: block;
+}
+
+/* Styles untuk indikator fokus */
+.focused {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Styles untuk switch TTS */
+.form-switch {
+  padding-left: 2.5rem;
+}
+
+.form-switch .form-check-input {
+  width: 2rem;
+  margin-left: -2.5rem;
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  border-radius: 2rem;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.form-switch .form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-switch .form-check-label {
+  font-weight: 600;
+  color: #495057;
 }
 
 /* Styles untuk konten menu */
